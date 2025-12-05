@@ -1,9 +1,9 @@
- <template>
+<template>
   <q-page padding>
     <div class="text-h4 q-mb-md">
       Advanced Full-Stack Demo (Quasar + Express)
     </div>
-    <!-- Git Workflow (จากตัวอย่างก่อน) -->
+
     <q-card class="q-mb-md">
       <q-card-section>
         <div class="text-h6">Git Workflow</div>
@@ -20,7 +20,7 @@
         </q-list>
       </q-card-section>
     </q-card>
-    <!-- Docker Concepts (จากตัวอย่างก่อน) -->
+
     <q-card class="q-mb-md">
       <q-card-section>
         <div class="text-h6">Docker Concepts</div>
@@ -34,7 +34,7 @@
         </q-list>
       </q-card-section>
     </q-card>
-    <!-- New: API Data from Backend -->
+
     <q-card>
       <q-card-section>
         <div class="text-h6">Data from Backend API</div>
@@ -57,15 +57,33 @@
       </q-card-section>
     </q-card>
   </q-page>
- </template>
- <script setup>
- import { ref, onMounted } from 'vue';
- import axios from 'axios';
- // จากตัวอย่างก่อน
- const gitSteps = [ /* ... (same as before) */ ];
- const dockerItems = [ /* ... (same as before) */ ];
- const apiData = ref({ git: {}, docker: {} });
- const loading = ref(true);
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+// ข้อมูล Git Steps (mockup)
+const gitSteps = [
+  { title: 'Clone', detail: 'Download code from remote repository' },
+  { title: 'Branch', detail: 'Isolate code for new features' },
+  { title: 'Commit', detail: 'Save changes locally' },
+  { title: 'Push', detail: 'Upload changes to remote' },
+  { title: 'Pull Request', detail: 'Review code before merging' }
+];
+
+// ข้อมูล Docker Items (mockup)
+const dockerItems = [
+  { title: 'Image', detail: 'Template for creating containers' },
+  { title: 'Container', detail: 'Running instance of an image' },
+  { title: 'Dockerfile', detail: 'Script to build an image' },
+  { title: 'Compose', detail: 'Tool for defining multi-container apps' },
+  { title: 'Volume', detail: 'Persist data outside containers' }
+];
+
+const apiData = ref({ git: {}, docker: {} });
+const loading = ref(true);
+
 const fetchData = async () => {
   loading.value = true;
   try {
@@ -76,6 +94,7 @@ const fetchData = async () => {
   } finally {
     loading.value = false;
   }
- };
- onMounted(fetchData);
- </script>
+};
+
+onMounted(fetchData);
+</script>
